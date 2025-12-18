@@ -1,6 +1,5 @@
 // ==UserScript==
 // @name         中正大學單一入口自動化 (自訂延遲版)
-// @namespace    1
 // @version      1.2
 // @description  可自訂延遲時間的自動化腳本
 // @author       Andy
