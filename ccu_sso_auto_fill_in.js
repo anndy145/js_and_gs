@@ -5,6 +5,7 @@
 // @description  自動填入 CCU SSO 帳號密碼
 // @author       Andy
 // @match        https://cas.ccu.edu.tw/login*
+// @match        https://portal.ccu.edu.tw/*
 // @grant        none
 // ==/UserScript==
 (function () {
@@ -14,6 +15,12 @@
         username: "你的帳號",
         password: "你的密碼"
     };
+    // 尋找 class 為 signin-btn 底下的 a 標籤並點擊
+    const loginBtn = document.querySelector('.signin-btn a');
+    if (loginBtn) {
+        loginBtn.click();
+    }
+
 
     function forceFill(element, value) {
         if (!element) return false;
