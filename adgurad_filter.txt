@@ -1,0 +1,18 @@
+! === Facebook 介面優化 ===
+! 封鎖 Facebook 影片動態 (Reels)
+facebook.com##div[aria-label="Reel"]
+! 移除首頁上方的「建立貼文」區塊 (包含：在想些什麼、直播、相片)
+facebook.com##div[role="region"][aria-label="建立貼文"]
+! 移除整個右側邊欄 (包含：贊助廣告、聯絡人名單、群組對話)
+facebook.com##div[role="complementary"]
+! === Instagram 介面優化 ===
+! 移除左側側邊欄的「探索」按鈕
+instagram.com##a[href="/explore/"]
+! 移除左側側邊欄的「Reels」連續短片按鈕
+instagram.com##a[href="/reels/"]
+! 移除左側側邊欄的「建立」按鈕 (透過連結網址阻擋)
+instagram.com##a[href="#"]:has(svg[aria-label*="新貼文"])
+! 移除左下角「其他 Meta 旗下產品」選單按鈕
+instagram.com##span:has-text("其他 Meta 旗下產品")
+! 移除頁面底部連結欄位與版權宣告文字 (例如：Meta, 關於, 說明...)
+www.instagram.com##._ab8b
