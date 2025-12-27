@@ -5,6 +5,10 @@ facebook.com##div[aria-label="Reel"]
 facebook.com##div[role="region"][aria-label="建立貼文"]
 ! 移除整個右側邊欄 (包含：贊助廣告、聯絡人名單、群組對話)
 facebook.com##div[role="complementary"]
+! 移除 Facebook Reels 橫欄 - 針對 aria-label
+facebook.com##div[role="region"][aria-label="Reel"]
+! 移除 Facebook Reels 橫欄 - 透過內容偵測並向上追溯
+facebook.com##div:has(> div > div > div > h3:has-text("Reel")):xpath(..)
 ! === Instagram 介面優化 ===
 ! 移除左側側邊欄的「探索」按鈕
 instagram.com##a[href="/explore/"]
@@ -12,7 +16,5 @@ instagram.com##a[href="/explore/"]
 instagram.com##a[href="/reels/"]
 ! 移除左側側邊欄的「建立」按鈕 (透過連結網址阻擋)
 instagram.com##a[href="#"]:has(svg[aria-label*="新貼文"])
-! 移除左下角「其他 Meta 旗下產品」選單按鈕
-instagram.com##span:has-text("其他 Meta 旗下產品")
 ! 移除頁面底部連結欄位與版權宣告文字 (例如：Meta, 關於, 說明...)
 www.instagram.com##._ab8b
