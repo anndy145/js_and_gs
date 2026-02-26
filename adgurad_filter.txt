@@ -1,3 +1,8 @@
+! Title: Andy's Filter
+! Description: piyan
+! Version: 2026.0226.1
+! Expires: 1 days 
+! ----------------------------------------------------------------------
 ! === Facebook 介面優化 ===
 ! 封鎖 Facebook 影片動態 (Reels)
 facebook.com##div[aria-label="Reel"]
