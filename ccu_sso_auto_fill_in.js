@@ -1,13 +1,11 @@
 // ==UserScript==
-// @name         中正大學單一入口與成績查詢自動化
+// @name         中正大學單一入口自動化
 // @namespace    1
-// @version      1.5
-// @description  支援單一入口、CAS、KIKI 與各項子系統 (如校際選課) 自動跳轉登入
+// @version      1.6
+// @description  支援單一入口與 CAS 自動跳轉登入
 // @author       Andy
 // @match        https://cas.ccu.edu.tw/login*
 // @match        https://portal.ccu.edu.tw/*
-// @match        https://kiki.ccu.edu.tw/*
-// @match        https://www026220.ccu.edu.tw/*
 // @grant        none
 // @run-at       document-idle
 // ==/UserScript==
@@ -19,7 +17,7 @@
     const CONFIG = {
         username: "您的學號",
         password: "您的密碼",
-        AUTO_LOGIN: true,         // 是否自動點擊登入
+        AUTO_LOGIN: 0,         // 是否自動點擊登入
         START_DELAY: 500,         // 進入頁面後多久開始填寫
         SUBMIT_DELAY: 1000,       // 填寫完成後多久點擊登入
         POLLING_INTERVAL: 800     // 檢查欄位頻率
@@ -35,16 +33,6 @@
                 return true;
             }
         }
-
-        // B. 處理您提供的網址 (www026220.ccu.edu.tw) 
-        // 點擊「校內教職員生登入」按鈕
-        const schoolStaffBtn = document.querySelector('a[href*="casLogin"]');
-        if (schoolStaffBtn) {
-            console.log("偵測到校內教職員生登入按鈕，自動跳轉...");
-            schoolStaffBtn.click();
-            return true;
-        }
-        
         return false;
     }
 
@@ -70,11 +58,7 @@
 
             // --- 判斷頁面類型並抓取欄位 ---
             const url = window.location.href;
-            if (url.includes('kiki.ccu.edu.tw')) {
-                userField = document.querySelector('input[name="id"]');
-                passField = document.querySelector('input[name="password"]');
-                submitBtn = document.querySelector('input[type="submit"]');
-            } else if (url.includes('cas.ccu.edu.tw')) {
+            if (url.includes('cas.ccu.edu.tw')) {
                 userField = document.getElementById('username');
                 passField = document.getElementById('password');
                 submitBtn = document.querySelector('button[name="submitBtn"]');
@@ -102,6 +86,6 @@
             attempts++;
         }, CONFIG.POLLING_INTERVAL);
     }
-    
+
     setTimeout(startProcess, CONFIG.START_DELAY);
 })();
