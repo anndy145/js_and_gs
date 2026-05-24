@@ -47,7 +47,6 @@
     };
 
     const loginLogic = setInterval(() => {
-        // 如果還沒設定過帳密，停止執行並在控制台提示
         if (!config.email || !config.password) {
             console.warn("Cengage 腳本：尚未設定帳密，請使用 Tampermonkey 選單進行設定。");
             return;
@@ -88,14 +87,13 @@
                     if (finalSubmit) {
                         finalSubmit.click();
                         console.log("已點擊登入按鈕");
-                        clearInterval(loginLogic); // 成功後停止
+                        clearInterval(loginLogic); 
                     }
                 }, config.clickDelay);
             }
         }
     }, config.checkInterval);
 
-    // 20 秒安全保護，避免腳本死循環
     setTimeout(() => clearInterval(loginLogic), 20000);
 
 })();
